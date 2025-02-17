@@ -7,9 +7,10 @@ import java.util.stream.Collectors;
 public class Differ {
     public static String sortResult(HashMap<String, Object> map) {
         return map.entrySet().stream()
-                .sorted()
                 .map(e -> e.getKey() + "=" + e.getValue())
-                .collect(Collectors.joining("%n", "{", "}"));
+                .sorted()
+                .collect(Collectors.joining(System.lineSeparator(),
+                        "{" + System.lineSeparator(),  System.lineSeparator() + "}"));
     }
 
     public static String generate(String filepath1, String filepath2) throws IOException {
