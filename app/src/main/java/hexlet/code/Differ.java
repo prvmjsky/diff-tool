@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 public class Differ {
     public static String sortResult(HashMap<String, Object> map) {
         return map.entrySet().stream()
-                .map(e -> e.getKey() + "=" + e.getValue())
+                .map(e -> e.getKey() + ": " + e.getValue())
                 .sorted()
                 .collect(Collectors.joining("\n",
                         "{\n",  "\n}"));
@@ -28,7 +28,7 @@ public class Differ {
                 var value2 = map2.get(key);
 
                 if (value1.equals(value2)) {
-                    diffMap.put(key, value1);
+                    diffMap.put("  " + key, value1);
                 } else {
                     diffMap.put("- " + key, value1);
                     diffMap.put("+ " + key, value2);
