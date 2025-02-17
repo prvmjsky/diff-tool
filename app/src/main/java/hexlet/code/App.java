@@ -29,9 +29,8 @@ public class App implements Callable<Integer> {
 
     @Override
     public Integer call() throws IOException {
-        Parser parser = new Parser();
-        System.out.println(parser.parseJsonToMap(filepath1));
-        System.out.println(parser.parseJsonToMap(filepath2));
+        System.out.println(Parser.parseJsonToMap(filepath1));
+        System.out.println(Parser.parseJsonToMap(filepath2));
         return 0;
     }
 }
