@@ -1,6 +1,7 @@
 package hexlet.code;
 
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.stream.Collectors;
 
@@ -8,7 +9,7 @@ public class Differ {
     public static String sortResult(HashMap<String, Object> map) {
         return map.entrySet().stream()
                 .map(e -> e.getKey() + ": " + e.getValue())
-                .sorted()
+                .sorted(Comparator.comparing(str -> str.substring(2)))
                 .collect(Collectors.joining("\n",
                         "{\n",  "\n}"));
     }
