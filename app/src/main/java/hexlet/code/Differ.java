@@ -9,8 +9,8 @@ public class Differ {
         return map.entrySet().stream()
                 .map(e -> e.getKey() + "=" + e.getValue())
                 .sorted()
-                .collect(Collectors.joining(System.lineSeparator(),
-                        "{" + System.lineSeparator(),  System.lineSeparator() + "}"));
+                .collect(Collectors.joining("\n",
+                        "{\n",  "\n}"));
     }
 
     public static String generate(String filepath1, String filepath2) throws IOException {
