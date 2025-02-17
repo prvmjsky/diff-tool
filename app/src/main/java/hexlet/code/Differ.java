@@ -7,9 +7,20 @@ import java.util.stream.Collectors;
 
 public class Differ {
     public static String sortResult(HashMap<String, Object> map) {
-        return map.entrySet().stream()
-                .map(e -> e.getKey() + ": " + e.getValue())
-                .sorted(Comparator.comparing(str -> str.substring(2)))
+        return map.keySet().stream()
+                .sorted(Comparator.comparing(key -> key.substring(2)))
+                .sorted((key1, key2) -> {
+                    if (key1.substring(2).equals(key2.substring(2))) {
+                        if (key1.startsWith("-")) {
+                            return -1;
+                        } else {
+                            return 1;
+                        }
+                    } else {
+                        return 0;
+                    }
+                })
+                .map(key -> key + ": " + map.get(key))
                 .collect(Collectors.joining("\n",
                         "{\n",  "\n}"));
     }
