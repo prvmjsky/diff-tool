@@ -14,6 +14,8 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-      - uses: gradle/actions/setup-gradle@v3
+      - uses: gradle/gradle-build-action@v3
+        with:
+          gradle-version: 8.7
       - run: ./app/gradlew checkstyleMain
       - run: ./app/gradlew test
