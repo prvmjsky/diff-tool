@@ -21,8 +21,8 @@ public class Differ {
                     }
                 })
                 .map(key -> key + ": " + map.get(key))
-                .collect(Collectors.joining("\n",
-                        "{\n",  "\n}"));
+                .collect(Collectors.joining("\n" + "  ",
+                        "{\n" + "  ",  "\n}"));
     }
 
     public static String generate(String filepath1, String filepath2) throws IOException {
