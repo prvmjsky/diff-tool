@@ -14,7 +14,6 @@ public class App implements Callable<Integer> {
 
     public static void main(String[] args) throws IOException {
         int exitCode = new CommandLine(new App()).execute(args);
-        System.out.println(exitCode);
     }
 
     @Parameters(index = "0", description = "path to first file", paramLabel = "filepath1")
