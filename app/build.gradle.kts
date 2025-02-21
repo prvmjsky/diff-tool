@@ -27,3 +27,5 @@ tasks.test {
 application {
     mainClass = "hexlet.code.App"
 }
+
+tasks.jacocoTestReport { reports { xml.required.set(true) } }
