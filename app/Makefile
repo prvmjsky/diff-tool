@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := build-run
 
 run-dist:
-	./build/install/app/bin/app
+	./build/install/app/bin/app ${ARGS}
 
 setup:
 	./gradlew wrapper --gradle-version 8.5
@@ -14,6 +14,9 @@ build:
 
 install:
 	./gradlew clean install
+
+install-dist:
+	./gradlew clean installDist
 
 run:
 	./gradlew run
