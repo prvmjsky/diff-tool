@@ -1,6 +1,7 @@
 package hexlet.code;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -21,11 +22,15 @@ public class DifferTest {
         return Files.readString(path);
     }
 
-    @Test
-    public void testDefault() throws IOException {
-        var file1 = getFixturePath("file1.json").toString();
-        var file2 = getFixturePath("file2.json").toString();
+    @ParameterizedTest
+    @CsvSource({
+        "file1.json, file2.json",
+        "file1.yml, file2.yml"
+    })
+    public void testDefaultJson(String filepath1, String filepath2) throws IOException {
+        var filepathString1 = getFixturePath(filepath1).toString();
+        var filepathString2 = getFixturePath(filepath2).toString();
         var diff = readFixture("diff");
-        assertEquals(diff, Differ.generate(file1, file2));
+        assertEquals(diff, Differ.generate(filepathString1, filepathString2));
     }
 }

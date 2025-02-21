@@ -10,9 +10,9 @@ import java.util.Map;
 
 public class Parser {
 
-    public static Map<String, Object> parseJsonToMap(String path) throws IOException {
+    public static Map<String, Object> parseToMap(String path) throws IOException {
         File file = Paths.get(path).normalize().toAbsolutePath().toFile();
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(file, new TypeReference<Map<String, Object>>() { });
+        return mapper.readValue(file, new TypeReference<>() { });
     }
 }

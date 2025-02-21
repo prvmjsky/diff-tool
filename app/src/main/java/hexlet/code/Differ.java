@@ -26,8 +26,8 @@ public class Differ {
     }
 
     public static String generate(String filepath1, String filepath2) throws IOException {
-        var map1 = new HashMap<>(Parser.parseJsonToMap(filepath1));
-        var map2 = new HashMap<>(Parser.parseJsonToMap(filepath2));
+        var map1 = new HashMap<>(Parser.parseToMap(filepath1));
+        var map2 = new HashMap<>(Parser.parseToMap(filepath2));
 
         if (map1.equals(map2)) {
             return sortResult(map1);
