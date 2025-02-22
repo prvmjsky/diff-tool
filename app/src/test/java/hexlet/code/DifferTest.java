@@ -27,10 +27,11 @@ public class DifferTest {
         "file1.json, file2.json",
         "file1.yml, file2.yml"
     })
-    public void testDefaultJson(String filepath1, String filepath2) throws IOException {
+    public void testDefault(String filepath1, String filepath2) throws IOException {
         var filepathString1 = getFixturePath(filepath1).toString();
         var filepathString2 = getFixturePath(filepath2).toString();
+        var format = "stylish";
         var diff = readFixture("diff");
-        assertEquals(diff, Differ.generate(filepathString1, filepathString2));
+        assertEquals(diff, Differ.generate(filepathString1, filepathString2, format));
     }
 }
