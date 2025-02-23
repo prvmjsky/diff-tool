@@ -8,8 +8,8 @@ import java.util.HashSet;
 import java.util.stream.Collectors;
 
 public class Differ {
-    private static String getPrefix(Diff diff) {
-        var status = diff.getStatus();
+    private static String getPrefix(ComparableLine line) {
+        var status = line.getStatus();
 
         return switch (status) {
             case "removed" -> "- ";
@@ -18,11 +18,11 @@ public class Differ {
         };
     }
 
-    private static String sortResult(ArrayList<Diff> diffs, String format) throws IOException {
+    private static String sortResult(ArrayList<ComparableLine> lines, String format) throws IOException {
         if (format.equals("stylish")) {
-            return diffs.stream()
-                    .sorted(Comparator.comparing(Diff::getKey))
-                    .sorted(Diff::compareTo)
+            return lines.stream()
+                    .sorted(Comparator.comparing(ComparableLine::getKey))
+                    .sorted(ComparableLine::compareTo)
                     .map(d -> getPrefix(d) + d.getKey() + ": " + d.getValue())
                     .collect(Collectors.joining("\n" + "  ",
                             "{\n" + "  ",  "\n}"));
@@ -34,11 +34,11 @@ public class Differ {
     public static String generate(String filepath1, String filepath2, String format) throws IOException {
         var map1 = new HashMap<>(Parser.parseToMap(filepath1));
         var map2 = new HashMap<>(Parser.parseToMap(filepath2));
-        var diffs = new ArrayList<Diff>();
+        var lines = new ArrayList<ComparableLine>();
 
         if (map1.equals(map2)) {
             map1.forEach((key, value) -> {
-                diffs.add(new Diff("same", key, String.valueOf(value)));
+                lines.add(new ComparableLine("same", key, String.valueOf(value)));
             });
 
         } else {
@@ -54,13 +54,13 @@ public class Differ {
 
             removed.forEach(key -> {
                 var value = String.valueOf(map1.get(key));
-                diffs.add(new Diff("removed", key, value));
+                lines.add(new ComparableLine("removed", key, value));
             });
 
 
             added.forEach(key -> {
                 var value = String.valueOf(map2.get(key));
-                diffs.add(new Diff("added", key, value));
+                lines.add(new ComparableLine("added", key, value));
             });
 
             common.forEach(key -> {
@@ -68,14 +68,14 @@ public class Differ {
                 var value2 = String.valueOf(map2.get(key));
 
                 if (value1.equals(value2)) {
-                    diffs.add(new Diff("same", key, value1));
+                    lines.add(new ComparableLine("same", key, value1));
                 } else {
-                    diffs.add(new Diff("removed", key, value1));
-                    diffs.add(new Diff("added", key, value2));
+                    lines.add(new ComparableLine("removed", key, value1));
+                    lines.add(new ComparableLine("added", key, value2));
                 }
             });
         }
 
-        return sortResult(diffs, format);
+        return sortResult(lines, format);
     }
 }

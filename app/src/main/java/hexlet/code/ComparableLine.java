@@ -7,20 +7,20 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Diff implements Comparable<Diff> {
+public class ComparableLine implements Comparable<ComparableLine> {
     private String status;
     private String key;
     private String value;
 
     @Override
-    public int compareTo(Diff diff) {
+    public int compareTo(ComparableLine line) {
 
-        if (this.key.equals(diff.key)) {
-            if (this.status.equals("removed") && diff.status.equals("added")) {
+        if (this.key.equals(line.key)) {
+            if (this.status.equals("removed") && line.status.equals("added")) {
                 return -1;
             }
 
-            if (diff.status.equals("removed") && this.status.equals("added")) {
+            if (line.status.equals("removed") && this.status.equals("added")) {
                 return 1;
             }
         }
