@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.stream.Collectors;
 
 public class Differ {
@@ -25,7 +24,7 @@ public class Differ {
                     .sorted(ComparableLine::compareTo)
                     .map(d -> getPrefix(d) + d.getKey() + ": " + d.getValue())
                     .collect(Collectors.joining("\n" + "  ",
-                            "{\n" + "  ",  "\n}"));
+                            "{\n" + "  ", "\n}"));
         } else {
             throw new IOException("wrong style format");
         }
@@ -42,37 +41,27 @@ public class Differ {
             });
 
         } else {
-            var keySet1 = map1.keySet();
-            var keySet2 = map2.keySet();
-            var removed = new HashSet<>(keySet1);
-            var added = new HashSet<>(keySet2);
-            var common = new HashSet<>(keySet1);
+            map1.forEach((key, value) -> {
+                var value1 = String.valueOf(value);
 
-            removed.removeAll(keySet2);
-            added.removeAll(keySet1);
-            common.retainAll(keySet2);
+                if (map2.containsKey(key)) {
+                    var value2 = String.valueOf(map2.get(key));
+                    map2.remove(key);
 
-            removed.forEach(key -> {
-                var value = String.valueOf(map1.get(key));
-                lines.add(new ComparableLine("removed", key, value));
-            });
+                    if (value2.equals(value1)) {
+                        lines.add(new ComparableLine("same", key, value1));
+                    } else {
+                        lines.add(new ComparableLine("removed", key, value1));
+                        lines.add(new ComparableLine("added", key, value2));
+                    }
 
-
-            added.forEach(key -> {
-                var value = String.valueOf(map2.get(key));
-                lines.add(new ComparableLine("added", key, value));
-            });
-
-            common.forEach(key -> {
-                var value1 = String.valueOf(map1.get(key));
-                var value2 = String.valueOf(map2.get(key));
-
-                if (value1.equals(value2)) {
-                    lines.add(new ComparableLine("same", key, value1));
                 } else {
                     lines.add(new ComparableLine("removed", key, value1));
-                    lines.add(new ComparableLine("added", key, value2));
                 }
+            });
+
+            map2.forEach((key, value) -> {
+                lines.add(new ComparableLine("added", key, String.valueOf(value)));
             });
         }
 
