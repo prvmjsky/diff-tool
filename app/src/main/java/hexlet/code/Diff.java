@@ -16,12 +16,12 @@ public class Diff implements Comparable<Diff> {
     public int compareTo(Diff diff) {
 
         if (this.key.equals(diff.key)) {
-            if (this.status.equals("before") && diff.status.equals("after")) {
-                return 1;
+            if (this.status.equals("removed") && diff.status.equals("added")) {
+                return -1;
             }
 
-            if (diff.status.equals("before") && this.status.equals("after")) {
-                return -1;
+            if (diff.status.equals("removed") && this.status.equals("added")) {
+                return 1;
             }
         }
 
