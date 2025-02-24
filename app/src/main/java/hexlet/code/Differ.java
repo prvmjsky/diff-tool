@@ -26,8 +26,7 @@ public class Differ {
                     if (value2.equals(value1)) {
                         lines.add(new ComparableLine("same", key, value1));
                     } else {
-                        lines.add(new ComparableLine("removed", key, value1));
-                        lines.add(new ComparableLine("added", key, value2));
+                        lines.add(new ComparableLine("updated", key, value2, value1));
                     }
 
                 } else {

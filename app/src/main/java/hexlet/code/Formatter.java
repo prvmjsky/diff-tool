@@ -11,7 +11,7 @@ public abstract class Formatter {
         return switch (format) {
             case "stylish" -> new Stylish();
             case "plain" -> new Plain();
-            default -> throw new IOException("wrong output format");
+            default -> throw new IOException("Unknown output format");
         };
     }
 
