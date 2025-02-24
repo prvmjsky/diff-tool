@@ -27,11 +27,24 @@ public class DifferTest {
         "file1.json, file2.json",
         "file1.yml, file2.yml"
     })
-    public void testDefault(String filepath1, String filepath2) throws IOException {
+    public void testStylish(String filepath1, String filepath2) throws IOException {
         var filepathString1 = getFixturePath(filepath1).toString();
         var filepathString2 = getFixturePath(filepath2).toString();
         var format = "stylish";
-        var diff = readFixture("diff");
+        var diff = readFixture("stylishDiff");
+        assertEquals(diff, Differ.generate(filepathString1, filepathString2, format));
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "file1.json, file2.json",
+            "file1.yml, file2.yml"
+    })
+    public void testPlain(String filepath1, String filepath2) throws IOException {
+        var filepathString1 = getFixturePath(filepath1).toString();
+        var filepathString2 = getFixturePath(filepath2).toString();
+        var format = "plain";
+        var diff = readFixture("plainDiff");
         assertEquals(diff, Differ.generate(filepathString1, filepathString2, format));
     }
 }
