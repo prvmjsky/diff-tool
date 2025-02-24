@@ -40,6 +40,7 @@ public class Differ {
             });
         }
 
-        return ComparableLine.sortResult(lines, format);
+        var formatter = Formatter.getFormatter(format);
+        return formatter.formatDiff(lines);
     }
 }
