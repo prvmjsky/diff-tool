@@ -23,7 +23,7 @@ public class Stylish extends Formatter {
 
         lines.forEach(line -> {
             if (line.getStatus().equals("updated")) {
-                diff.addAll(line.getSeparatedUpdated());
+                diff.addAll(line.getBeforeAndAfter());
             } else {
                 diff.add(line);
             }

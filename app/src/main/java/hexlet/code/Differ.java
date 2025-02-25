@@ -3,6 +3,7 @@ package hexlet.code;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Differ {
     public static String generate(String filepath1, String filepath2, String format) throws IOException {
@@ -17,25 +18,24 @@ public class Differ {
 
         } else {
             map1.forEach((key, value) -> {
-                var value1 = String.valueOf(value);
 
                 if (map2.containsKey(key)) {
-                    var value2 = String.valueOf(map2.get(key));
+                    var value2 = map2.get(key);
                     map2.remove(key);
 
-                    if (value2.equals(value1)) {
-                        lines.add(new ComparableLine("same", key, value1));
+                    if (Objects.equals(value, value2)) {
+                        lines.add(new ComparableLine("same", key, value));
                     } else {
-                        lines.add(new ComparableLine("updated", key, value2, value1));
+                        lines.add(new ComparableLine("updated", key, value2, value));
                     }
 
                 } else {
-                    lines.add(new ComparableLine("removed", key, value1));
+                    lines.add(new ComparableLine("removed", key, value));
                 }
             });
 
             map2.forEach((key, value) -> {
-                lines.add(new ComparableLine("added", key, String.valueOf(value)));
+                lines.add(new ComparableLine("added", key, value));
             });
         }
 

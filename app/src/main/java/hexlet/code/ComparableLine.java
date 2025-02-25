@@ -21,7 +21,7 @@ public class ComparableLine implements Comparable<ComparableLine> {
         this.value = value;
     }
 
-    public List<ComparableLine> getSeparatedUpdated() {
+    public List<ComparableLine> getBeforeAndAfter() {
         var before = new ComparableLine("removed", this.key, this.oldValue);
         var after = new ComparableLine("added", this.key, this.value);
         return List.of(before, after);

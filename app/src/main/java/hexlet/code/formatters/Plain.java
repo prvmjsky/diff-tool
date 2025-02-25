@@ -6,11 +6,12 @@ import hexlet.code.Formatter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Plain extends Formatter {
-    private static String formatValue(Object value) {
-        if (value instanceof Collection) {
+    private static String toPlainStringElement(Object value) {
+        if (value instanceof Collection || value instanceof Map) {
             return "[complex value]";
         } else if (value instanceof String) {
             return "'" + value + "'";
@@ -19,10 +20,10 @@ public class Plain extends Formatter {
         }
     }
 
-    private static String lineToPlainString(ComparableLine line) {
-        var key = formatValue(line.getKey());
-        var value = formatValue(line.getValue());
-        var oldValue = formatValue(line.getOldValue());
+    private static String toPlainString(ComparableLine line) {
+        var key = toPlainStringElement(line.getKey());
+        var value = toPlainStringElement(line.getValue());
+        var oldValue = toPlainStringElement(line.getOldValue());
 
         return switch (line.getStatus()) {
             case "removed" -> "Property " + key + " was removed";
@@ -36,9 +37,10 @@ public class Plain extends Formatter {
     public String formatDiff(ArrayList<ComparableLine> lines) {
 
         return lines.stream()
+                .filter(line -> !line.getStatus().equals("same"))
                 .sorted(Comparator.comparing(ComparableLine::getKey))
                 .sorted(ComparableLine::compareTo)
-                .map(Plain::lineToPlainString)
+                .map(Plain::toPlainString)
                 .collect(Collectors.joining("\n"));
     }
 }

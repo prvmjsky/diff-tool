@@ -24,8 +24,8 @@ public class DifferTest {
 
     @ParameterizedTest
     @CsvSource({
-        "file1.json, file2.json",
-        "file1.yml, file2.yml"
+            "file1.json, file2.json",
+            "file1.yml, file2.yml"
     })
     public void testStylish(String filepath1, String filepath2) throws IOException {
         var filepathString1 = getFixturePath(filepath1).toString();
