@@ -12,7 +12,8 @@ public class Stylish extends Formatter {
         return switch (line.getStatus()) {
             case "removed" -> "- ";
             case "added" -> "+ ";
-            default -> "  ";
+            case "same" -> "  ";
+            default -> throw new IllegalArgumentException("Unknown status of line");
         };
     }
 

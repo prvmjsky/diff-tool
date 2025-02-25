@@ -12,10 +12,10 @@ import java.util.List;
 public class ComparableLine implements Comparable<ComparableLine> {
     private String status;
     private String key;
-    private String value;
-    private String oldValue;
+    private Object value;
+    private Object oldValue;
 
-    public ComparableLine(String status, String key, String value) {
+    public ComparableLine(String status, String key, Object value) {
         this.status = status;
         this.key = key;
         this.value = value;

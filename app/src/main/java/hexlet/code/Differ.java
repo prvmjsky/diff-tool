@@ -12,7 +12,7 @@ public class Differ {
 
         if (map1.equals(map2)) {
             map1.forEach((key, value) -> {
-                lines.add(new ComparableLine("same", key, String.valueOf(value)));
+                lines.add(new ComparableLine("same", key, value));
             });
 
         } else {
