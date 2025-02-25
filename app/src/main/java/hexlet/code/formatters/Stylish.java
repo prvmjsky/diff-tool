@@ -19,6 +19,7 @@ public class Stylish extends Formatter {
     @Override
     public String formatDiff(ArrayList<ComparableLine> lines) {
         var diff = new ArrayList<ComparableLine>();
+
         lines.forEach(line -> {
             if (line.getStatus().equals("updated")) {
                 diff.addAll(line.getSeparatedUpdated());
@@ -30,7 +31,7 @@ public class Stylish extends Formatter {
         return diff.stream()
                 .sorted(Comparator.comparing(ComparableLine::getKey))
                 .sorted(ComparableLine::compareTo)
-                .map(d -> getPrefix(d) + d.getKey() + ": " + d.getValue())
+                .map(line -> getPrefix(line) + line.getKey() + ": " + line.getValue())
                 .collect(Collectors.joining("\n" + "  ",
                         "{\n" + "  ", "\n}"));
     }
