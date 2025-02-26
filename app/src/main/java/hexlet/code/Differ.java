@@ -7,8 +7,8 @@ import java.util.Objects;
 
 public class Differ {
     public static String generate(String filepath1, String filepath2, String format) throws IOException {
-        var map1 = new HashMap<>(Parser.parseToMap(filepath1));
-        var map2 = new HashMap<>(Parser.parseToMap(filepath2));
+        var map1 = new HashMap<>(Parser.toMap(filepath1));
+        var map2 = new HashMap<>(Parser.toMap(filepath2));
         var lines = new ArrayList<ComparableLine>();
 
         if (map1.equals(map2)) {

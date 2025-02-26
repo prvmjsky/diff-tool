@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import hexlet.code.formatters.Json;
 import hexlet.code.formatters.Plain;
 import hexlet.code.formatters.Stylish;
 
@@ -11,6 +12,7 @@ public abstract class Formatter {
         return switch (format) {
             case "stylish" -> new Stylish();
             case "plain" -> new Plain();
+            case "json" -> new Json();
             default -> throw new IOException("Unknown output format");
         };
     }
