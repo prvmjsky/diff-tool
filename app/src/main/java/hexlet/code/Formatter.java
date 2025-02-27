@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import hexlet.code.formatters.Json;
 import hexlet.code.formatters.Plain;
 import hexlet.code.formatters.Stylish;
@@ -17,5 +18,5 @@ public abstract class Formatter {
         };
     }
 
-    public abstract String formatDiff(ArrayList<ComparableLine> lines);
+    public abstract String formatDiff(ArrayList<ComparableLine> lines) throws JsonProcessingException;
 }

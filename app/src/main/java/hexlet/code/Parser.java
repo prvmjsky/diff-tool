@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
@@ -25,7 +26,7 @@ public class Parser {
         return mapper.readValue(file, new TypeReference<>() { });
     }
 
-    public static String toString(Object object) throws IOException {
+    public static String toString(Object object) throws JsonProcessingException {
         mapper = new ObjectMapper();
         return mapper.writeValueAsString(object);
     }
