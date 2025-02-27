@@ -34,7 +34,7 @@ public class DifferTest {
         var filepathString2 = getFixturePath(filepath2).toString();
 
         var expected = readFixture("stylishDiff");
-        var actual = Differ.generate(filepathString1, filepathString2, "stylish");
+        var actual = Differ.generate(filepathString1, filepathString2);
         assertEquals(expected, actual);
     }
 

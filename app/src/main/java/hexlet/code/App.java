@@ -12,8 +12,9 @@ import java.util.concurrent.Callable;
         description = "Compares two configuration files and shows a difference.")
 public class App implements Callable<Integer> {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         int exitCode = new CommandLine(new App()).execute(args);
+        System.exit(exitCode);
     }
 
     @Parameters(index = "0", description = "path to first file", paramLabel = "filepath1")

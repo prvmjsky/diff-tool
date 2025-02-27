@@ -6,6 +6,10 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class Differ {
+    public static String generate(String filepath1, String filepath2) throws IOException {
+        return generate(filepath1, filepath2, "stylish");
+    }
+
     public static String generate(String filepath1, String filepath2, String format) throws IOException {
         var map1 = new HashMap<>(Parser.toMap(filepath1));
         var map2 = new HashMap<>(Parser.toMap(filepath2));
