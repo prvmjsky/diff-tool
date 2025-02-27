@@ -1,6 +1,5 @@
 package hexlet.code;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -63,13 +62,8 @@ public class Tests {
         var filepathString2 = getFixturePath(filepath2).toString();
         var format = "json";
 
-        var expected = Parser.toString(readFixture("jsonDiff.json"));
+        var expected = readFixture("jsonDiff.json");
         var actual = Differ.generate(filepathString1, filepathString2, format);
         assertEquals(expected, actual);
-    }
-
-    @Test
-    public void howDoesParserToStringLook() throws IOException {
-        System.out.println(Parser.toString(readFixture("file2.json")));
     }
 }

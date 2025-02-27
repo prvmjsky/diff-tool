@@ -23,17 +23,12 @@ public class Parser {
         }
 
         File file = Paths.get(path).normalize().toAbsolutePath().toFile();
-        return mapper.readValue(file, new TypeReference<>() { });
+        return mapper.readValue(file, new TypeReference<>() {
+        });
     }
 
     public static String toString(Object object) throws JsonProcessingException {
         mapper = new ObjectMapper();
-        return mapper.writeValueAsString(object);
-    }
-
-    public static void toJson(String path, Object object) throws IOException {
-        mapper = new ObjectMapper();
-        File file = Paths.get(path).normalize().toAbsolutePath().toFile();
-        mapper.writeValue(file, object);
+        return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(object).replace("\r\n", "\n");
     }
 }

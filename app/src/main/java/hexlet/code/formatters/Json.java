@@ -7,13 +7,17 @@ import hexlet.code.Parser;
 import hexlet.code.entities.JsonDiff;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
 public class Json extends Formatter {
     @Override
     public String formatDiff(ArrayList<ComparableLine> lines) throws JsonProcessingException {
         var diff = new JsonDiff();
+        var before = new LinkedHashMap<String, Object>();
+        var after = new LinkedHashMap<String, Object>();
 
-        lines.forEach(line -> {
+        var sortedLines = lines.stream().sorted(ComparableLine::compareTo);
+        sortedLines.forEach(line -> {
             var key = line.getKey();
             var value = line.getValue();
 
@@ -22,15 +26,15 @@ public class Json extends Formatter {
                 case "added" -> diff.getAdded().put(key, value);
                 case "removed" -> diff.getRemoved().put(key, value);
                 case "updated" -> {
-                    diff.getBefore().put(key, line.getOldValue());
-                    diff.getAfter().put(key, value);
+                    before.put(key, line.getOldValue());
+                    after.put(key, value);
                 }
                 default -> throw new IllegalArgumentException("Unknown status of line");
             }
         });
 
-        diff.getUpdated().put("before", diff.getBefore());
-        diff.getUpdated().put("after", diff.getAfter());
+        diff.getUpdated().put("before", before);
+        diff.getUpdated().put("after", after);
 
         return Parser.toString(diff);
     }

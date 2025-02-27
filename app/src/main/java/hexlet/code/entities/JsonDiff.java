@@ -3,16 +3,13 @@ package hexlet.code.entities;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 @Getter
 @Setter
 public class JsonDiff {
-    private HashMap<String, Object> same = new HashMap<>();
-    private HashMap<String, Object> added = new HashMap<>();
-    private HashMap<String, Object> removed = new HashMap<>();
-
-    private HashMap<String, HashMap<String, Object>> updated = new HashMap<>();
-    private HashMap<String, Object> before = new HashMap<>();
-    private HashMap<String, Object> after = new HashMap<>();
+    private LinkedHashMap<String, Object> same = new LinkedHashMap<>();
+    private LinkedHashMap<String, Object> added = new LinkedHashMap<>();
+    private LinkedHashMap<String, Object> removed = new LinkedHashMap<>();
+    private LinkedHashMap<String, LinkedHashMap<String, Object>> updated = new LinkedHashMap<>();
 }

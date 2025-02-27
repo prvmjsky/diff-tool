@@ -4,7 +4,6 @@ import hexlet.code.ComparableLine;
 import hexlet.code.Formatter;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.stream.Collectors;
 
 public class Stylish extends Formatter {
@@ -30,7 +29,6 @@ public class Stylish extends Formatter {
         });
 
         return diff.stream()
-                .sorted(Comparator.comparing(ComparableLine::getKey))
                 .sorted(ComparableLine::compareTo)
                 .map(line -> getPrefix(line) + line.getKey() + ": " + line.getValue())
                 .collect(Collectors.joining("\n" + "  ",

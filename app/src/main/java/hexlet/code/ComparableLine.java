@@ -15,6 +15,7 @@ public class ComparableLine implements Comparable<ComparableLine> {
     private Object value;
     private Object oldValue;
 
+    // constructor for non-updated line
     public ComparableLine(String status, String key, Object value) {
         this.status = status;
         this.key = key;
@@ -40,6 +41,6 @@ public class ComparableLine implements Comparable<ComparableLine> {
             }
         }
 
-        return 0;
+        return this.key.compareTo(line.key);
     }
 }

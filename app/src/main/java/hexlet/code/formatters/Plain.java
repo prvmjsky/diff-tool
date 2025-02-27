@@ -5,7 +5,6 @@ import hexlet.code.Formatter;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Comparator;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -38,7 +37,6 @@ public class Plain extends Formatter {
 
         return lines.stream()
                 .filter(line -> !line.getStatus().equals("same"))
-                .sorted(Comparator.comparing(ComparableLine::getKey))
                 .sorted(ComparableLine::compareTo)
                 .map(Plain::toPlainString)
                 .collect(Collectors.joining("\n"));
