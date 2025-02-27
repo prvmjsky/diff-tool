@@ -9,7 +9,7 @@ import hexlet.code.entities.JsonDiff;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
-public class Json extends Formatter {
+public final class Json extends Formatter {
     @Override
     public String formatDiff(ArrayList<ComparableLine> lines) throws JsonProcessingException {
         var diff = new JsonDiff();

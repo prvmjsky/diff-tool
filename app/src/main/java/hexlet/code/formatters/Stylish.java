@@ -6,7 +6,7 @@ import hexlet.code.Formatter;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
-public class Stylish extends Formatter {
+public final class Stylish extends Formatter {
     private String getPrefix(ComparableLine line) {
         return switch (line.getStatus()) {
             case "removed" -> "- ";

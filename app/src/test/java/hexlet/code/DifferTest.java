@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class DifferTest {
+public final class DifferTest {
 
     private static Path getFixturePath(String filename) {
         return Paths.get("src", "test", "resources", "fixtures", filename)

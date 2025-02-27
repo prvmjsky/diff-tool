@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class Plain extends Formatter {
+public final class Plain extends Formatter {
     private static String toPlainStringElement(Object value) {
         if (value instanceof Collection || value instanceof Map) {
             return "[complex value]";

@@ -9,7 +9,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-public class ComparableLine implements Comparable<ComparableLine> {
+public final class ComparableLine implements Comparable<ComparableLine> {
     private String status;
     private String key;
     private Object value;
