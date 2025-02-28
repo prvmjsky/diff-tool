@@ -26,8 +26,8 @@ public final class DifferTest {
     @ParameterizedTest
     @CsvSource({
         "file1.json, file2.json",
-        "file1.yml, file2.yml",
-        "file1.json, file2.yml"
+        "file1.yml, file2.yaml",
+        "file1.json, file2.yaml"
     })
     public void testStylishDiffer(String filepath1, String filepath2) throws IOException {
         var filepathString1 = getFixturePath(filepath1).toString();
@@ -41,8 +41,8 @@ public final class DifferTest {
     @ParameterizedTest
     @CsvSource({
         "file1.json, file2.json",
-        "file1.yml, file2.yml",
-        "file1.json, file2.yml"
+        "file1.yml, file2.yaml",
+        "file1.json, file2.yaml"
     })
     public void testPlainDiffer(String filepath1, String filepath2) throws IOException {
         var filepathString1 = getFixturePath(filepath1).toString();
@@ -56,8 +56,8 @@ public final class DifferTest {
     @ParameterizedTest
     @CsvSource({
         "file1.json, file2.json",
-        "file1.yml, file2.yml",
-        "file1.json, file2.yml"
+        "file1.yml, file2.yaml",
+        "file1.json, file2.yaml"
     })
     public void testJsonDiffer(String filepath1, String filepath2) throws IOException {
         var filepathString1 = getFixturePath(filepath1).toString();
