@@ -31,4 +31,9 @@ application {
     mainClass = "hexlet.code.App"
 }
 
-tasks.jacocoTestReport { reports { xml.required.set(true) } }
+tasks.jacocoTestReport {
+    reports {
+        dependsOn(tasks.test)
+        xml.required.set(true)
+    }
+}
