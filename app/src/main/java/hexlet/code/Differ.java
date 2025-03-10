@@ -3,6 +3,7 @@ package hexlet.code;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Objects;
 
 public class Differ {
@@ -21,25 +22,27 @@ public class Differ {
             });
 
         } else {
-            map1.forEach((key, value) -> {
+            var keysUnion = new HashSet<>(map1.keySet());
+            keysUnion.addAll(map2.keySet());
 
-                if (map2.containsKey(key)) {
-                    var value2 = map2.get(key);
-                    map2.remove(key);
+            keysUnion.forEach(key -> {
+                var value1 = map1.get(key);
+                var value2 = map2.get(key);
 
-                    if (Objects.equals(value, value2)) {
-                        lines.add(new ComparableLine("same", key, value));
+                if (map1.containsKey(key) && map2.containsKey(key)) {
+
+                    if (Objects.equals(value1, value2)) {
+                        lines.add(new ComparableLine("same", key, value1));
                     } else {
-                        lines.add(new ComparableLine("updated", key, value2, value));
+                        lines.add(new ComparableLine("updated", key, value2, value1));
                     }
 
-                } else {
-                    lines.add(new ComparableLine("removed", key, value));
-                }
-            });
+                } else if (map1.containsKey(key)) {
+                    lines.add(new ComparableLine("removed", key, value1));
 
-            map2.forEach((key, value) -> {
-                lines.add(new ComparableLine("added", key, value));
+                } else {
+                    lines.add(new ComparableLine("added", key, value2));
+                }
             });
         }
 
