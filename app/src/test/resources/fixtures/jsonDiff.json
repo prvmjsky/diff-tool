@@ -1,40 +1,75 @@
 {
-  "same" : {
-    "chars1" : [ "a", "b", "c" ],
-    "numbers1" : [ 1, 2, 3, 4 ]
-  },
-  "added" : {
-    "key2" : "value2",
-    "numbers4" : [ 4, 5, 6 ],
-    "obj1" : {
-      "nestedKey" : "value",
-      "isNested" : true
-    }
-  },
-  "removed" : {
-    "key1" : "value1",
-    "numbers3" : [ 3, 4, 5 ]
-  },
-  "updated" : {
-    "before" : {
-      "chars2" : [ "d", "e", "f" ],
-      "checked" : false,
-      "default" : null,
-      "id" : 45,
-      "numbers2" : [ 2, 3, 4, 5 ],
-      "setting1" : "Some value",
-      "setting2" : 200,
-      "setting3" : true
+  "keys" : {
+    "chars1" : {
+      "status" : "same",
+      "value" : [ "a", "b", "c" ]
     },
-    "after" : {
-      "chars2" : false,
-      "checked" : true,
-      "default" : [ "value1", "value2" ],
-      "id" : null,
-      "numbers2" : [ 22, 33, 44, 55 ],
-      "setting1" : "Another value",
-      "setting2" : 300,
-      "setting3" : "none"
+    "chars2" : {
+      "status" : "updated",
+      "oldValue" : [ "d", "e", "f" ],
+      "value" : false
+    },
+    "checked" : {
+      "status" : "updated",
+      "oldValue" : false,
+      "value" : true
+    },
+    "default" : {
+      "status" : "updated",
+      "oldValue" : null,
+      "value" : [ "value1", "value2" ]
+    },
+    "id" : {
+      "status" : "updated",
+      "oldValue" : 45,
+      "value" : null
+    },
+    "key1" : {
+      "status" : "removed",
+      "value" : "value1"
+    },
+    "key2" : {
+      "status" : "added",
+      "value" : "value2"
+    },
+    "numbers1" : {
+      "status" : "same",
+      "value" : [ 1, 2, 3, 4 ]
+    },
+    "numbers2" : {
+      "status" : "updated",
+      "oldValue" : [ 2, 3, 4, 5 ],
+      "value" : [ 22, 33, 44, 55 ]
+    },
+    "numbers3" : {
+      "status" : "removed",
+      "value" : [ 3, 4, 5 ]
+    },
+    "numbers4" : {
+      "status" : "added",
+      "value" : [ 4, 5, 6 ]
+    },
+    "obj1" : {
+      "status" : "added",
+      "value" : {
+        "nestedKey" : "value",
+        "isNested" : true
+      }
+    },
+    "setting1" : {
+      "status" : "updated",
+      "oldValue" : "Some value",
+      "value" : "Another value"
+    },
+    "setting2" : {
+      "status" : "updated",
+      "oldValue" : 200,
+      "value" : 300
+    },
+    "setting3" : {
+      "status" : "updated",
+      "oldValue" : true,
+      "value" : "none"
     }
   }
 }
