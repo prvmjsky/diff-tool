@@ -1,75 +1,73 @@
 {
-  "keys" : {
-    "chars1" : {
-      "status" : "same",
-      "value" : [ "a", "b", "c" ]
-    },
-    "chars2" : {
-      "status" : "updated",
-      "oldValue" : [ "d", "e", "f" ],
-      "value" : false
-    },
-    "checked" : {
-      "status" : "updated",
-      "oldValue" : false,
-      "value" : true
-    },
-    "default" : {
-      "status" : "updated",
-      "oldValue" : null,
-      "value" : [ "value1", "value2" ]
-    },
-    "id" : {
-      "status" : "updated",
-      "oldValue" : 45,
-      "value" : null
-    },
-    "key1" : {
-      "status" : "removed",
-      "value" : "value1"
-    },
-    "key2" : {
-      "status" : "added",
-      "value" : "value2"
-    },
-    "numbers1" : {
-      "status" : "same",
-      "value" : [ 1, 2, 3, 4 ]
-    },
-    "numbers2" : {
-      "status" : "updated",
-      "oldValue" : [ 2, 3, 4, 5 ],
-      "value" : [ 22, 33, 44, 55 ]
-    },
-    "numbers3" : {
-      "status" : "removed",
-      "value" : [ 3, 4, 5 ]
-    },
-    "numbers4" : {
-      "status" : "added",
-      "value" : [ 4, 5, 6 ]
-    },
-    "obj1" : {
-      "status" : "added",
-      "value" : {
-        "nestedKey" : "value",
-        "isNested" : true
-      }
-    },
-    "setting1" : {
-      "status" : "updated",
-      "oldValue" : "Some value",
-      "value" : "Another value"
-    },
-    "setting2" : {
-      "status" : "updated",
-      "oldValue" : 200,
-      "value" : 300
-    },
-    "setting3" : {
-      "status" : "updated",
-      "oldValue" : true,
-      "value" : "none"
+  "chars1" : {
+    "status" : "same",
+    "value" : [ "a", "b", "c" ]
+  },
+  "chars2" : {
+    "status" : "updated",
+    "oldValue" : [ "d", "e", "f" ],
+    "value" : false
+  },
+  "checked" : {
+    "status" : "updated",
+    "oldValue" : false,
+    "value" : true
+  },
+  "default" : {
+    "status" : "updated",
+    "oldValue" : null,
+    "value" : [ "value1", "value2" ]
+  },
+  "id" : {
+    "status" : "updated",
+    "oldValue" : 45,
+    "value" : null
+  },
+  "key1" : {
+    "status" : "removed",
+    "value" : "value1"
+  },
+  "key2" : {
+    "status" : "added",
+    "value" : "value2"
+  },
+  "numbers1" : {
+    "status" : "same",
+    "value" : [ 1, 2, 3, 4 ]
+  },
+  "numbers2" : {
+    "status" : "updated",
+    "oldValue" : [ 2, 3, 4, 5 ],
+    "value" : [ 22, 33, 44, 55 ]
+  },
+  "numbers3" : {
+    "status" : "removed",
+    "value" : [ 3, 4, 5 ]
+  },
+  "numbers4" : {
+    "status" : "added",
+    "value" : [ 4, 5, 6 ]
+  },
+  "obj1" : {
+    "status" : "added",
+    "value" : {
+      "nestedKey" : "value",
+      "isNested" : true
     }
+  },
+  "setting1" : {
+    "status" : "updated",
+    "oldValue" : "Some value",
+    "value" : "Another value"
+  },
+  "setting2" : {
+    "status" : "updated",
+    "oldValue" : 200,
+    "value" : 300
+  },
+  "setting3" : {
+    "status" : "updated",
+    "oldValue" : true,
+    "value" : "none"
   }
 }
