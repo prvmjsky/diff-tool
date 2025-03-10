@@ -12,9 +12,9 @@ public class Differ {
     }
 
     public static String generate(String filepath1, String filepath2, String format) throws IOException {
-        var map1 = new HashMap<>(Parser.toMap(filepath1));
-        var map2 = new HashMap<>(Parser.toMap(filepath2));
         var lines = new ArrayList<ComparableLine>();
+        var map1 = getMap(filepath1);
+        var map2 = getMap(filepath2);
 
         if (map1.equals(map2)) {
             map1.forEach((key, value) -> {
@@ -48,5 +48,11 @@ public class Differ {
 
         var formatter = Formatter.getFormatter(format);
         return formatter.formatDiff(lines);
+    }
+
+    private static HashMap<String, Object> getMap(String filepath) throws IOException {
+        var data = Parser.readFile(filepath);
+        var fileType = Parser.getFileType(filepath);
+        return new HashMap<>(Parser.toMap(data, fileType));
     }
 }
