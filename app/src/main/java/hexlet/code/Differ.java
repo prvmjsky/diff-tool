@@ -1,6 +1,8 @@
 package hexlet.code;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
 
 public class Differ {
@@ -18,8 +20,23 @@ public class Differ {
     }
 
     private static HashMap<String, Object> getMap(String filepath) throws IOException {
-        var data = Parser.readFile(filepath);
-        var fileType = Parser.getFileType(filepath);
+        var data = readFile(filepath);
+        var fileType = getFileType(filepath);
         return new HashMap<>(Parser.toMap(data, fileType));
+    }
+
+    public static String readFile(String path) throws IOException {
+        var normalizedPath = Paths.get(path).toAbsolutePath().normalize();
+        return Files.readString(normalizedPath);
+    }
+
+    public static String getFileType(String path) throws IOException {
+        if (path.endsWith(".json")) {
+            return "json";
+        } else if (path.endsWith(".yml") || path.endsWith(".yaml")) {
+            return "yaml";
+        } else {
+            throw new IOException("wrong file extension");
+        }
     }
 }
