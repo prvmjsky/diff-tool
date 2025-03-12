@@ -1,9 +1,9 @@
 package hexlet.code.formatters;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import hexlet.code.ComparableLine;
 import hexlet.code.Formatter;
-import hexlet.code.Parser;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -44,6 +44,9 @@ public final class Json extends Formatter {
             diff.put(key, info);
         });
 
-        return Parser.toString(diff);
+        var mapper = new ObjectMapper();
+        return mapper.writerWithDefaultPrettyPrinter()
+            .writeValueAsString(diff)
+            .replace("\r\n", "\n");
     }
 }

@@ -41,9 +41,4 @@ public class Parser {
         return mapper.readValue(data, new TypeReference<>() {
         });
     }
-
-    public static String toString(Object object) throws JsonProcessingException {
-        var mapper = new ObjectMapper();
-        return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(object).replace("\r\n", "\n");
-    }
 }
